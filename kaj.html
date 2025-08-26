@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title></title>
+        <style>
+            .slant-v{
+  --slant: 40px;              /* adjust the depth of the slant */
+  background: #3b82f6;        /* your color */
+  color:#fff;
+  padding: 3rem 1.5rem;
+  clip-path: polygon(
+    0 var(--slant),   50% 0,   100% var(--slant),
+    100% 100%,        0 100%
+  );
+}
+
+.slant-diagonal{
+  --slant: 40px;
+  background:#10b981;
+  color:#fff;
+  padding:3rem 1.5rem;
+  clip-path: polygon(
+    0 var(--slant),  100% 0,  100% 100%,  0 100%
+  );
+}
+
+.slant-cut{
+  --cut: 24px;                 /* size of the diagonal cuts */
+  background:#111827;          /* panel color */
+  color:#fff;
+  padding:3rem 1.5rem;
+  position:relative;
+  /* Use CSS masking so it works with any background color/image behind it */
+  -webkit-mask:
+    linear-gradient(135deg, transparent 0 var(--cut), #000 0) top left,
+    linear-gradient(-135deg, transparent 0 var(--cut), #000 0) top right,
+    linear-gradient(#000 0 0) bottom;
+  -webkit-mask-size: 51% 51%, 51% 51%, 100% calc(100% - var(--cut));
+  -webkit-mask-repeat: no-repeat;
+          mask:
+    linear-gradient(135deg, transparent 0 var(--cut), #000 0) top left,
+    linear-gradient(-135deg, transparent 0 var(--cut), #000 0) top right,
+    linear-gradient(#000 0 0) bottom;
+          mask-size: 51% 51%, 51% 51%, 100% calc(100% - var(--cut));
+          mask-repeat: no-repeat;
+}
+
+.slant-fallback{
+  background:#ef4444;
+  color:#fff;
+  padding:3rem 1.5rem 2rem;
+  position:relative;
+  overflow:hidden;
+}
+.slant-fallback::before,
+.slant-fallback::after{
+  content:"";
+  position:absolute;
+  top:0; width:60%; height:50px;      /* adjust height for slant depth */
+  background:inherit;                  /* same color as the panel */
+  transform-origin:top;
+}
+.slant-fallback::before{
+  left:-10%; transform:skewY(-8deg);
+}
+.slant-fallback::after{
+  right:-10%; transform:skewY(8deg);
+}
+        </style>
+    </head>
+    <body>
+        <section class="slant-diagonal">
+         <h2>Slanted top (both sides)</h2>
+        <p>Content goes here…</p>
+</section>
+    </body>
+</html>
