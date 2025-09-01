@@ -11,18 +11,32 @@
     <link href="assets/css/brands.css" rel="stylesheet" />
   </head>
   <body>
+    <div id="fullmenu" class="container-full fullmenu">
+          <div class="text-center">
+            <ul class="d-flex direction-col gap15 mt50">
+              <li><a href="#" class="active">Home</a></li>
+              <li><a href="#">Hotels</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Gallery</a></li>
+              <li><a href="#">News</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+            </div>
+        </div>
     <div class="header">
-      <div class="container-full">
+
+      <div class="container">
         <div class="d-flex space-between align-items-center">
           <div class="header__logo">
             <a href="#"><h3>Hepta</h3></a>
           </div>
-          <div class="header__menu d-flex direction-col space-between">
+          <div id="togMenu" onclick="toggleMenu()" class="close header__menu d-flex direction-col space-between">
             <span></span>
             <span></span>
             <span></span>
           </div>
         </div>
+        
       </div>
     </div>
     <div class="hero">
@@ -499,5 +513,11 @@
         </div>
       </div>
     </div>
+
+    <script>
+        function toggleMenu(){
+            document.getElementById("fullmenu").classList.toggle("open");
+        }
+    </script>
   </body>
 </html>
